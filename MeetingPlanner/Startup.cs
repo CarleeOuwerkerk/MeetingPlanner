@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+//using MeetingPlanner.AspNetCore.ExistingDb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MeetingPlanner
 {
@@ -22,6 +24,9 @@ namespace MeetingPlanner
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=MeetingPlanner;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<Models.MeetingPlannerContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

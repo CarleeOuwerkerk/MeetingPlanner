@@ -9,14 +9,18 @@ namespace MeetingPlanner.Models
         public virtual DbSet<Meeting> Meeting { get; set; }
         public virtual DbSet<Speaker> Speaker { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-//warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MeetingPlanner;Trusted_Connection=True;");
-            }
-        }
+        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //        {
+        //            if (!optionsBuilder.IsConfigured)
+        //            {
+        ////warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+        //                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MeetingPlanner;Trusted_Connection=True;");
+        //            }
+        //        }
+
+        public MeetingPlannerContext(DbContextOptions<MeetingPlannerContext> options)
+    : base(options)
+{ }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
