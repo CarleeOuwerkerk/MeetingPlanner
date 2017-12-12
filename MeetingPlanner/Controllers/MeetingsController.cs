@@ -62,8 +62,11 @@ namespace MeetingPlanner.Controllers
 
                 return RedirectToAction("Create" , "Speakers" , new {id = meeting.MeetingId});
             }
+
+            
             return View(meeting);
         }
+
 
         // GET: Meetings/Edit/5
         public async Task<IActionResult> Edit(int? id)
