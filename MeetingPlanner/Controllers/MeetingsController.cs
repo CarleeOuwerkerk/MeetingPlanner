@@ -59,7 +59,7 @@ namespace MeetingPlanner.Controllers
             {
                 _context.Add(meeting);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create" , "Speakers" , new {id = meeting.MeetingId});
             }
             return View(meeting);
         }

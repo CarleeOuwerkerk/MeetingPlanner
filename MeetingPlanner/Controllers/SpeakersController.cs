@@ -60,6 +60,8 @@ namespace MeetingPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
+                speaker.MeetingId = Convert.ToInt32(RouteData.Values["id"]);
+
                 _context.Add(speaker);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
