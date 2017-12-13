@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Speakers</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -21,12 +21,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Subject)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.MeetingId)
-                </th>
-            <th>
+                </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.SpeakerNavigation)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -42,12 +42,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MeetingId)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.SpeakerNavigation.ClosingHymn)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SpeakerId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.SpeakerId">Details</a> |
@@ -57,3 +57,7 @@
 }
     </tbody>
 </table>
+
+<div class="form-group">
+    <input value="Return to Meeting Details" class="btn btn-default" onclick="location.href='@Url.Action("Details", "Meetings")'" />
+</div>

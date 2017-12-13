@@ -64,7 +64,8 @@ namespace MeetingPlanner.Controllers
 
                 _context.Add(speaker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Speakers", new { id = speaker.MeetingId });
             }
             ViewData["SpeakerId"] = new SelectList(_context.Meeting, "MeetingId", "ClosingHymn", speaker.SpeakerId);
             return View(speaker);
