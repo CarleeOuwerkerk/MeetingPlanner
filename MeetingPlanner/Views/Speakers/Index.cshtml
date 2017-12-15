@@ -32,6 +32,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+
+    //if (item.MeetingId != theMeetingIdFromTheMeetingWeWereJustOn)
+    //{
+    //    continue;
+
+    //}
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

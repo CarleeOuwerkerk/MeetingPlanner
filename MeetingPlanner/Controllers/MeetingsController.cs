@@ -144,6 +144,8 @@ namespace MeetingPlanner.Controllers
         {
             var meeting = await _context.Meeting.SingleOrDefaultAsync(m => m.MeetingId == id);
             _context.Meeting.Remove(meeting);
+            var meeting2 = await _context.Speaker.SingleOrDefaultAsync(m => m.MeetingId == id);
+            _context.Speaker.Remove(meeting2);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

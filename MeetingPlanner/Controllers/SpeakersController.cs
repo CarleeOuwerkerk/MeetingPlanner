@@ -19,10 +19,20 @@ namespace MeetingPlanner.Controllers
         }
 
         // GET: Speakers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filterString)
         {
-            var meetingPlannerContext = _context.Speaker.Include(s => s.SpeakerNavigation);
-            return View(await meetingPlannerContext.ToListAsync());
+            //ViewData["CurrentFilter"] = filterString;
+
+            var speakers = from s in _context.Speaker
+                           select s;
+            if (!String.IsNullOrEmpty(filterString))
+            {
+                int meetingId = Convert.ToInt32(RouteData.Values[filterString]);
+                speakers = speakers.Where(s => s.MeetingId.Equals(meetingId));
+            }
+
+            //var meetingPlannerContext = _context.Speaker.Include(s => s.SpeakerNavigation);
+            return View(await speakers.ToListAsync());
         }
 
         // GET: Speakers/Details/5
