@@ -34,14 +34,14 @@ namespace MeetingPlanner.Controllers
 
             var meeting = await _context.Meeting
                 .SingleOrDefaultAsync(m => m.MeetingId == id);
-            var speakers = await _context.Speaker
-                .SingleOrDefaultAsync(s => s.MeetingId == id);
+            //var speakers = await _context.Speaker
+            //    .SingleOrDefaultAsync(s => s.MeetingId == id);
             if (meeting == null)
             {
                 return NotFound();
             }
 
-            return View("meeting", speakers);
+            return View(meeting);
         }
 
         // GET: Meetings/Create
