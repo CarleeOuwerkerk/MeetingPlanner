@@ -21,23 +21,17 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Subject)
                 </th>
-                @*<th>
+                <th class="hidden">
                     @Html.DisplayNameFor(model => model.MeetingId)
-                </th>*@
-            @*<th>
+                </th>
+            <th class="hidden">
                 @Html.DisplayNameFor(model => model.SpeakerNavigation)
-            </th>*@
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-
-    //if (item.MeetingId != theMeetingIdFromTheMeetingWeWereJustOn)
-    //{
-    //    continue;
-
-    //}
     
         <tr>
             <td>
@@ -49,12 +43,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
-            @*<td>
+            <td class="hidden">
                 @Html.DisplayFor(modelItem => item.MeetingId)
-            </td>*@
-            @*<td>
+            </td>
+            <td class="hidden">
                 @Html.DisplayFor(modelItem => item.SpeakerNavigation.ClosingHymn)
-            </td>*@
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SpeakerId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.SpeakerId">Details</a> |

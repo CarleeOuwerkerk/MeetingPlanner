@@ -44,7 +44,6 @@ namespace MeetingPlanner.Controllers
             }
 
             var speaker = await _context.Speaker
-                .Include(s => s.SpeakerNavigation)
                 .SingleOrDefaultAsync(m => m.SpeakerId == id);
             if (speaker == null)
             {
@@ -143,7 +142,7 @@ namespace MeetingPlanner.Controllers
             }
 
             var speaker = await _context.Speaker
-                .Include(s => s.SpeakerNavigation)
+                
                 .SingleOrDefaultAsync(m => m.SpeakerId == id);
             if (speaker == null)
             {
@@ -151,7 +150,10 @@ namespace MeetingPlanner.Controllers
             }
             string stringID = id.ToString();
 
-            return RedirectToAction("View", "Speakers", new { id });
+            ViewData["SpeakerId"] = new SelectList(_context.Meeting, "MeetingId", "ClosingHymn", speaker.SpeakerId);
+            return View(speaker);
+
+            // return RedirectToAction("Delete", "Speakers", new { id });
 
 
             //return View(speaker);
