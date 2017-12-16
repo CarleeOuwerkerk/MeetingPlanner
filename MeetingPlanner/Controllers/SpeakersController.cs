@@ -149,8 +149,12 @@ namespace MeetingPlanner.Controllers
             {
                 return NotFound();
             }
+            string stringID = id.ToString();
 
-            return View(speaker);
+            return RedirectToAction("View", "Speakers", new { id });
+
+
+            //return View(speaker);
         }
 
         // POST: Speakers/Delete/5
@@ -168,5 +172,6 @@ namespace MeetingPlanner.Controllers
         {
             return _context.Speaker.Any(e => e.SpeakerId == id);
         }
+
     }
 }
